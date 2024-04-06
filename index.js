@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const token = '6954274587:AAHUUdW0vwGpR4M02qYaAQo5xWeIE_SKrBY'; // Замініть на ваш реальний токен
-const webAppUrl = 'https://telbot-0e50814b9877.herokuapp.com/';
+const webAppUrl = 'https://react-food-app-1195b991855b.herokuapp.com/';
 
 const bot = new TelegramBot(token, { polling: true });
 const app = express();
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://telbot-0e50814b9877.herokuapp.com',
+  origin: 'https://react-food-app-1195b991855b.herokuapp.com',
   methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
