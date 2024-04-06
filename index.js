@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config()
 
-const token = '6954274587:AAHUUdW0vwGpR4M02qYaAQo5xWeIE_SKrBY'; // Замініть на ваш реальний токен
+const token = process.env.BOT_TOKEN; // Замініть на ваш реальний токен
 const webAppUrl = 'https://react-food-app-1195b991855b.herokuapp.com/';
 
 const bot = new TelegramBot(token, { polling: true });
