@@ -1,6 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config()
 
 const token = '6954274587:AAHUUdW0vwGpR4M02qYaAQo5xWeIE_SKrBY'; // Замініть на ваш реальний токен
 const webAppUrl = 'https://react-food-app-1195b991855b.herokuapp.com/';
@@ -110,5 +111,5 @@ app.post('/web-data', async (req, res) => {
 
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
