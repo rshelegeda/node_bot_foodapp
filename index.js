@@ -167,6 +167,8 @@ bot.on("message", async (msg) => {
   }
 });
 
+console.log('Yes');
+
 app.post("/web-data", async (req, res) => {
   const { queryId, products = [], totalPrice } = req.body;
   try {
