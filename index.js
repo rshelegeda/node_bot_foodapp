@@ -6,6 +6,9 @@ require("dotenv").config();
 const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, setDoc, collection, collectionGroup } = require('firebase/firestore');
 
+let price = 0;
+
+
 // const firebaseConfig = {
 //   apiKey: "AIzaSyAVou9ObOaVQyIgJi4k0gpL1BKyhXXNttQ",
 //   authDomain: "for-goros-bot.firebaseapp.com",
@@ -81,6 +84,8 @@ bot.on("message", async (msg) => {
     try {
       const data = JSON.parse(msg.web_app_data.data);
 
+      price = data.deliveryPrice;
+
       let deliveryMethodText = "";
       switch (data.deliveryMethod) {
         case "courier":
@@ -127,7 +132,7 @@ bot.on("message", async (msg) => {
 
         await bot.sendMessage(
           chatId,
-          `*💵 Вартість доставки:* _${data?.deliveryPrice}_`,
+          `*💵 Вартість доставки:* _${price}_`,
           { parse_mode: "Markdown" }
         );
         await bot.sendMessage(
