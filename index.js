@@ -6,7 +6,7 @@ require("dotenv").config();
 const { initializeApp } = require('firebase/app');
 const { getFirestore, doc, setDoc, collection, collectionGroup } = require('firebase/firestore');
 
-let price = 0;
+let price = 0; // Глобальная переменная. Доступ к ней из любой части кода.
 
 
 // const firebaseConfig = {
@@ -84,7 +84,7 @@ bot.on("message", async (msg) => {
     try {
       const data = JSON.parse(msg.web_app_data.data);
 
-      price = data.deliveryPrice;
+      price = data.deliveryPrice; // Получаем ее из Фронта.
 
       let deliveryMethodText = "";
       switch (data.deliveryMethod) {
@@ -132,7 +132,7 @@ bot.on("message", async (msg) => {
 
         await bot.sendMessage(
           chatId,
-          `*💵 Вартість доставки:* _${price}_`,
+          `*💵 Вартість доставки:* _${price}_`, // Используем ее
           { parse_mode: "Markdown" }
         );
         await bot.sendMessage(
@@ -185,7 +185,8 @@ app.post("/web-data", async (req, res) => {
         message_text: [
           "*Вітаємо з покупкою!*",
           `*Сума замовлення:* _${totalPrice}₴_`,
-          `*Вартість доставки:* _${price}₴_`,
+          `*Вартість доставки:* _${price}₴_`, // Используем ее еще раз
+          `*Загальна сума оплати:* _${totalPrice + price}₴_`,
           "*Що саме ви замовили:*",
           ...products.map((item) => `• _${item.title}_`),
         ].join("\n"),
